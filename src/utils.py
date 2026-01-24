@@ -9,25 +9,32 @@ from sklearn.model_selection import GridSearchCV
 from src.exception import CustomException
 from src.logger import logging
 
-def save_object(file_path, obj):
-    """
-    Ye function kisi bhi Python object ko ek specific path pr 
-    Pickle (.pkl) file banakar save karne ke kaam aata hai.
-    """
-    try:
-        # 1. Directory Path nikalna
-        dir_path = os.path.dirname(file_path)
+# def save_object(file_path, obj):
+#     """
+#     Ye function kisi bhi Python object ko ek specific path pr 
+#     Pickle (.pkl) file banakar save karne ke kaam aata hai.
+#     """
+#     try:
+#         # 1. Directory Path nikalna
+#         dir_path = os.path.dirname(file_path)
 
-        # 2. Agar directory exist nhi karti, toh use bana dena
-        os.makedirs(dir_path, exist_ok=True)
+#         # 2. Agar directory exist nhi karti, toh use bana dena
+#         os.makedirs(dir_path, exist_ok=True)
 
-        # 3. Object ko Binary Write ('wb') mode mein save karna
-        # 'dill' ya 'pickle' dono ka logic same hai, pr dill zyada powerful hai
-        with open(file_path, "wb") as file_obj:
-            pickle.dump(obj, file_obj)
+#         # 3. Object ko Binary Write ('wb') mode mein save karna
+#         # 'dill' ya 'pickle' dono ka logic same hai, pr dill zyada powerful hai
+#         with open(file_path, "wb") as file_obj:
+#             pickle.dump(obj, file_obj)
         
-        logging.info(f"Object successfully saved at: {file_path}")
-
+#         logging.info(f"Object successfully saved at: {file_path}")
+def save_object(file_path, obj):
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, "wb") as file_obj:
+            pickle.dump(obj, file_obj) # Ya dill.dump
+    except Exception as e:
+        raise CustomException(e, sys)
     except Exception as e:
         # Agar permissions issue ho ya space na ho, toh exception raise karna
         raise CustomException(e, sys)
