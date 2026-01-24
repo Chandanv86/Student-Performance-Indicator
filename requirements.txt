@@ -4,4 +4,7 @@ matplotlib
 seaborn
 scikit-learn
 dill
+pymongo
+mysql-connector-python
+xgboost
 # -e .
