@@ -49,7 +49,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param):
             model = list(models.values())[i]
             para = param[model_name]
 
-            # --- HYPERPARAMETER TUNING (Deep Dive) ---
+            # --- HYPERPARAMETER TUNING  ---
             # GridSearchCV ka kaam hai best parameters dhoondhna.
             # cv=3 ka matlab hai data ko 3 baar shuffle karke check karna.
             # n_jobs=-1 matlab computer ke saare processors use karna speed ke liye.
