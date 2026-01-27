@@ -2,12 +2,11 @@ pandas
 numpy
 matplotlib
 seaborn
-scikit-learn
+scikit-learn==1.3.2
 dill
 pymongo
 mysql-connector-python
 xgboost
 catboost
 flask
-gunicorn
 # -e .
